@@ -1,0 +1,137 @@
+<% layout("/layouts/boilerplate")%>
+<body>
+  <div class="row">
+    <div class="col-8 offset-2">
+      <br /><br />
+      <h1>ADD NEW LISTING</h1>
+      <form
+        action="/listings/new/add"
+        method="post"
+        class="needs-validation"
+        novalidate
+        enctype="multipart/form-data"
+        
+      >
+        <div class="mb-3">
+          <label for="title" class="form-label">Title</label>
+          <input
+            type="text"
+            name="title"
+            id=""
+            class="form-control"
+            placeholder="title"
+            required
+          />
+          <div class="valid-feedback">Tittle looks good</div>
+          <div class="invalid-feedback">Add Tittle</div>
+        </div>
+        <div class="mb-3">
+          <label for="location" class="form-label">Location</label>
+          <input
+            type="text"
+            name="location"
+            id=""
+            class="form-control"
+            placeholder="location"
+            required
+          />
+          <div class="valid-feedback">Location Done</div>
+          <div class="invalid-feedback">Add Location</div>
+        </div>
+
+        <div class="mb-3">
+          <label for="description" class="form-label">Descriptioon</label>
+          <input
+            type="text"
+            name="description"
+            id=""
+            class="form-control"
+            placeholder="description"
+            required
+          />
+          <div class="valid-feedback">Descriptioon looks good</div>
+          <div class="invalid-feedback">Add Descriptioon</div>
+        </div>
+        <div class="row">
+          <div class="mb-3 col-md-4">
+            <label for="price" class="form-label">Price</label>
+            <input
+              type="number"
+              name="price"
+              id=""
+              min="0"
+              placeholder="price"
+              class="form-control"
+              required
+            />
+            <div class="valid-feedback">Price</div>
+            <div class="invalid-feedback">Add Price</div>
+          </div>
+
+          <div class="mb-3 col-md-8">
+            <label for="country" class="form-label">Country</label>
+            <input
+              type="text"
+              name="country"
+              id=""
+              class="form-control"
+              placeholder="country"
+              required
+            />
+            <div class="valid-feedback">Country</div>
+            <div class="invalid-feedback">Add Country</div>
+          </div>
+        </div>
+        <!-- <div class="mb-3">
+          <label for="image" class="form-label">Image</label>
+          <input
+            type="text"
+            name="image"
+            id=""
+            class="form-control"
+            placeholder="image"
+          />
+        </div> -->
+        <div class="mb-3">
+          <label for="image" class="form-label">Upload Listing  Image</label>
+          <input
+            type="file"
+            name="image"
+            id=""
+            class="form-control"
+            required
+          />
+        </div>
+
+        <button class="mb-3 btn btn-dark add-btn">Submit</button>
+        <br /><br />
+      </form>
+    </div>
+  </div>
+  <script>
+    // FOR FORM VALIDATION KI KOI FIELD EMPTY NA RHE
+    // Example starter JavaScript for disabling form submissions if there are invalid fields
+    (() => {
+      "use strict";
+
+      // Fetch all the forms we want to apply custom Bootstrap validation styles to
+      const forms = document.querySelectorAll(".needs-validation");
+
+      // Loop over them and prevent submission
+      Array.from(forms).forEach((form) => {
+        form.addEventListener(
+          "submit",
+          (event) => {
+            if (!form.checkValidity()) {
+              event.preventDefault();
+              event.stopPropagation();
+            }
+
+            form.classList.add("was-validated");
+          },
+          false
+        );
+      });
+    })();
+  </script>
+</body>

@@ -1,0 +1,119 @@
+<% layout("/layouts/boilerplate")%>
+<body>
+  <div class="row mt-3">
+    <div class="col-8 offset-2">
+      <h1><b>Edit</b></h1>
+      <form
+        action="/listings/<%=data._id %>/edit?_method=PUT"
+        method="POST"
+        novalidate
+        class="needs-validation"
+        enctype="multipart/form-data"
+      >
+        <div class="mb-3">
+          <label for="title" class="form-label"><b>Title</b></label>
+          <input
+            type="text"
+            name="title"
+            class="form-control"
+            value="<%= data.title  %>"
+            required
+          />
+        </div>
+
+        <div class="mb-3">
+          <label for="description" class="form-label"><b>Descriptioon</b></label>
+          <input
+            type="text"
+            name="description"
+            class="form-control"
+            value="<%= data.description  %>"
+            required
+          /> 
+        </div>
+        <div class="mb-2">
+          Original Listing Image
+          <br>
+          <img src="<%= originalImageUrl %>" alt="">
+        </div>
+          <div class="mb-3">
+            <label for="image" class="form-label"><b>Upload New Image</b></label>
+            <input
+              type="file"
+              name="image"
+              class="form-control"
+            />
+          </div>
+
+        <!-- <div class="mb-3">
+          <label for="image" class="form-label"> <b>Image link</b> </b> </label>
+          <input name="data[image]" type="text" class="form-control" value="<%= data.image %>"/>
+        </div> -->
+        <div class="row">
+          <div class="mb-3 col-md-4">
+            <label for="price" class="form-label"><b>Price</b></label>
+            <input
+            type="number"
+              min="0"
+              name="price"
+              id=""
+              value="<%= data.price  %>"
+              class="form-control"
+              required
+            />
+          </div>
+          <div class="mb-3 col-md-8">
+            <label for="country" class="form-label"><b>Country</b></label>
+            <input
+              type="text"
+              name="country"
+              id=""
+              class="form-control"
+              value="<%= data.country  %>"
+              required
+            />
+          </div>
+        </div>
+        <div class="mb-3">
+          <label for="location" class="form-label"><b>Location</b></label>
+          <input
+            type="text"
+            name="location"
+            id=""
+            class="form-control"
+            value="<%= data.location  %>"
+            required
+          />
+        </div>
+
+        <button class="mb-3 btn btn-dark add-btn"><b>Edit</b></button>
+      </form>
+    </div>
+  </div>
+  <script>
+    // FOR FORM VALIDATION KI KOI FIELD EMPTY NA RHE
+    // Example starter JavaScript for disabling form submissions if there are invalid fields
+    (() => {
+      "use strict";
+
+      // Fetch all the forms we want to apply custom Bootstrap validation styles to
+      const forms = document.querySelectorAll(".needs-validation");
+
+      // Loop over them and prevent submission
+      Array.from(forms).forEach((form) => {
+        form.addEventListener(
+          "submit",
+          (event) => {
+            if (!form.checkValidity()) {
+              event.preventDefault();
+              event.stopPropagation();
+            }
+
+            form.classList.add("was-validated");
+          },
+          false
+        );
+      });
+    })();
+  </script>
+</body>
