@@ -47,7 +47,13 @@ main()
 app.listen(8000, () => {
   console.log("server Started at 8000");
 });
-
+const store = MongoStore.create({
+  mongoUrl: dbUrl, 
+  crypto : {
+      secret: process.env.SECRET,
+  },
+  touchAfter: 24 * 3600, 
+});
 const sessionOptions = {
   store,
   secret: process.env.SECRET,
@@ -61,13 +67,7 @@ const sessionOptions = {
 };
 
 
-const store = MongoStore.create({
-  mongoUrl: dbUrl, 
-  crypto : {
-      secret: process.env.SECRET,
-  },
-  touchAfter: 24 * 3600, 
-});
+
 
 store.on("error", () => {
 console.log("ERROR in MONGO SESSION STORE", err);
